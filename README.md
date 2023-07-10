@@ -39,3 +39,4 @@ Todo:
 
 1. Move the index to a database
 2. Add tests to check output of the plugin
+3. Add docs for deploying on aws with docker
