@@ -1,0 +1,18 @@
+{
+    "schema_version": "v1",
+    "name_for_human": "DocQA insurance",
+    "name_for_model": "DocQAInsurance",
+    "description_for_human": "Doc QA",
+    "description_for_model": "Plugin to answer questions about insurance policies using a db of policies or an insurance policy given by the user",
+    "auth": {
+      "type": "none"
+    },
+    "api": {
+      "type": "openapi",
+      "url": "http://localhost:5003/openapi.yaml"
+    },
+    "logo_url": "http://localhost:5003/images/logo.png",
+    "contact_email": "legal@example.com",
+    "legal_info_url": "http://example.com/legal"
+  }
+  

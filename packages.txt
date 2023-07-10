@@ -1,0 +1,5 @@
+pkg-config
+cmake
+libpoppler-dev
+libpoppler-cpp-dev
+poppler-utils

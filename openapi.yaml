@@ -1,0 +1,63 @@
+openapi: 3.0.1
+info:
+  title: DocQA Plugin
+  description: A plugin that allows the user to answer insurance related questions. Break down complex questions into sub-questions. Refine results by criteria, e.g. time / source, don't do this often. Questions will be answered from the database. If you do not know the user's username, ask them first before making queries to the plugin. Otherwise, use the username "global".
+  version: 'v1'
+servers:
+  - url: http://localhost:5003
+paths:
+  /docqa/{username}:
+    post:
+      operationId: docQA
+      summary: Answer questions based on our database or a link provided by the user
+      parameters:
+      - in: path
+        name: username
+        schema:
+            type: string
+        required: true
+        description: The name of the user.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/docQARequest'
+      responses:
+        "200":
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/QueryResponse"
+components:
+  schemas:
+    docQARequest:
+      type: object
+      required:
+      - query
+      properties:
+        url:
+          type: string
+          description: The url of file to download
+        query:
+          type: string
+          description: The query to ask
+          required: true
+    docQAResponse:
+      type: object
+      required:
+      - answer
+      - source
+      properties:
+        answer:
+          type: string
+          description: The answer to the insurance related question
+          required: true
+        source:
+          type: string
+          description: The pdf doc from which we generated the answer
+          required: true
+        question:
+          type: string
+          description: The original query asked by the user
